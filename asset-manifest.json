@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-around-api-full_es/static/css/main.8950d674.css",
-    "main.js": "/react-around-api-full_es/static/js/main.38dca528.js",
+    "main.js": "/react-around-api-full_es/static/js/main.229f4f0b.js",
     "static/media/denied.jpg": "/react-around-api-full_es/static/media/denied.ed31265cd720ccd0103b.jpg",
     "static/media/logo.svg": "/react-around-api-full_es/static/media/logo.564af492f4be9b1186b759c10a73f4c8.svg",
     "index.html": "/react-around-api-full_es/index.html",
@@ -14,10 +14,10 @@
     "static/media/edit-icon.svg": "/react-around-api-full_es/static/media/edit-icon.dd0216e57795a77daa67.svg",
     "static/media/add-icon.svg": "/react-around-api-full_es/static/media/add-icon.d86bb2edc2f6eadb96b7.svg",
     "main.8950d674.css.map": "/react-around-api-full_es/static/css/main.8950d674.css.map",
-    "main.38dca528.js.map": "/react-around-api-full_es/static/js/main.38dca528.js.map"
+    "main.229f4f0b.js.map": "/react-around-api-full_es/static/js/main.229f4f0b.js.map"
   },
   "entrypoints": [
     "static/css/main.8950d674.css",
-    "static/js/main.38dca528.js"
+    "static/js/main.229f4f0b.js"
   ]
 }
