@@ -1,0 +1,10 @@
+.header__button {
+  background-image: url(../../../images/toggle-menu.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  cursor: pointer;
+  height: 37px;
+  transition: 0.4s ease;
+}

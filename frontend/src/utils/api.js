@@ -1,7 +1,7 @@
-import { API_BASE_URL } from "./config";
+import API_BASE_URL from './config';
 
 class Api {
-  constructor({baseUrl, headers}) {
+  constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
@@ -16,9 +16,8 @@ class Api {
       });
       if (response.ok) {
         return response.json();
-      } else {
-        return Promise.reject(`Error:${response.status}`);
       }
+      return Promise.reject(new Error(`Error:${response.status}`));
     } catch (error) {
       throw new Error(`${error}`);
     }
@@ -34,16 +33,15 @@ class Api {
       });
       if (response.ok) {
         return response.json();
-      } else {
-        return Promise.reject(`Error:${response.status}`);
       }
+      return Promise.reject(new Error(`Error:${response.status}`));
     } catch (error) {
       throw new Error(`${error}`);
     }
   }
 
   async editProfile(body, token) {
-    const {name, about} = body;
+    const { name, about } = body;
     try {
       const response = await fetch(`${this._baseUrl}/users/me`, {
         method: 'PATCH',
@@ -52,15 +50,14 @@ class Api {
           authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          name: name,
-          about: about,
+          name,
+          about,
         }),
       });
       if (response.ok) {
         return response.json();
-      } else {
-        return Promise.reject(`Error ${response.status}`);
       }
+      return Promise.reject(new Error(`Error ${response.status}`));
     } catch (error) {
       throw new Error(`${error}`);
     }
@@ -80,9 +77,8 @@ class Api {
       });
       if (response.ok) {
         return response.json();
-      } else {
-        return Promise.reject(`Error ${response.status}`);
       }
+      return Promise.reject(new Error(`Error ${response.status}`));
     } catch (error) {
       throw new Error(`${error}`);
     }
@@ -110,9 +106,8 @@ class Api {
       }
       if (response.ok) {
         return response.json();
-      } else {
-        return Promise.reject(`Error ${response.status}`);
       }
+      return Promise.reject(new Error(`Error ${response.status}`));
     } catch (error) {
       throw new Error(`${error}`);
     }
@@ -129,14 +124,13 @@ class Api {
         },
         body: JSON.stringify({
           name: title,
-          link: link,
+          link,
         }),
       });
       if (response.ok) {
         return response.json();
-      } else {
-        return Promise.reject(`Error ${response.status}`);
       }
+      return Promise.reject(new Error(`Error ${response.status}`));
     } catch (error) {
       throw new Error(`${error}`);
     }
@@ -151,11 +145,10 @@ class Api {
           authorization: `Bearer ${token}`,
         },
       });
-      if (response.ok) {
-        onDeleteCard();
-      } else {
-        return Promise.reject(`Error: ${response.status}`);
+      if (!response.ok) {
+        return Promise.reject(new Error(`Error: ${response.status}`));
       }
+      return onDeleteCard();
     } catch (error) {
       throw new Error(`${error}`);
     }

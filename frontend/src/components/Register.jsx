@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import * as auth from '../utils/auth';
-import {Link, useNavigate } from 'react-router-dom';
 import InfoTooltip from './InfoTooltip';
 
-const Register = () => {
+function Register() {
   const [formData, setFormData] = useState({});
   const [infoToolOpen, setInfoToolOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
@@ -24,10 +24,10 @@ const Register = () => {
 
   const onRegister = (evt) => {
     evt.preventDefault();
-    const {password, email} = formData;
+    const { password, email } = formData;
     auth.register(password, email).then((res) => {
       if (res.data) {
-        navigate('/signin', {state: 'success'});
+        navigate('/signin', { state: 'success' });
       } else {
         setError(true);
       }
@@ -40,8 +40,9 @@ const Register = () => {
       <div className="register" onSubmit={onRegister}>
         <form action="" className="form">
           <h2 className="form__title">Regístrate</h2>
-          <label className="form__label">
+          <label htmlFor="email-register" className="form__label">
             <input
+              id="email-register"
               type="email"
               className="form__input"
               placeholder="Correo electrónico"
@@ -50,8 +51,9 @@ const Register = () => {
               onChange={handleChange}
             />
           </label>
-          <label className="form__label">
+          <label htmlFor="password-register" className="form__label">
             <input
+              id="password-register"
               type="password"
               className="form__input"
               placeholder="Contraseña"
@@ -60,7 +62,7 @@ const Register = () => {
               onChange={handleChange}
             />
           </label>
-          <button className="form__button">Regístrate</button>
+          <button type="submit" className="form__button">Regístrate</button>
           <Link to="/signin" className="form__link">
             ¿Ya eres miembro? Inicia sesión aquí
           </Link>
@@ -73,6 +75,6 @@ const Register = () => {
       />
     </>
   );
-};
+}
 
 export default Register;

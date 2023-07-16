@@ -1,10 +1,8 @@
 import React from 'react';
+import { Link, useMatch } from 'react-router-dom';
 import logo from '../images/logo.svg';
-import {Link, useMatch} from 'react-router-dom';
-import toggleMenu from '../images/toggle-menu.svg';
-import add from '../images/add-icon.svg';
 
-const Header = ({handleSignOut, email}) => {
+function Header({ handleSignOut, email }) {
   const [open, setOpen] = React.useState(false);
 
   const handleMenu = () => {
@@ -34,25 +32,26 @@ const Header = ({handleSignOut, email}) => {
           <div
             className={`header__user-info ${
               open && 'header__user-info_opened'
-            }`}>
+            }`}
+          >
             <span className="header__email">{email}</span>
-            <button className="header__logout" onClick={onSignOut}>
+            <button type="submit" className="header__logout" onClick={onSignOut}>
               Cerrar sesión
             </button>
           </div>
           {open ? (
-            <img
-              src={add}
-              alt="close menu"
-              className="header__close-icon"
+            <button
+              aria-label="hamgurger-close"
+              type="button"
               onClick={handleMenu}
+              className="header__close-icon"
             />
           ) : (
-            <img
-              src={toggleMenu}
-              alt="burger menu"
-              className="header__menu-icon"
+            <button
+              aria-label="hamgurger-open"
+              type="button"
               onClick={handleMenu}
+              className="header__menu-icon"
             />
           )}
         </>

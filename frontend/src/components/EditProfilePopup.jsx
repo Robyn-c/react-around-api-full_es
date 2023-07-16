@@ -1,13 +1,13 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm';
-import {CurrentUserContext} from '../contexts/CurrentUserContext';
+import CurrentUserContext from '../contexts/CurrentUserContext';
 
-const EditProfilePopup = ({
+function EditProfilePopup({
   isOpen,
   onClose,
   onUpdateUser,
   handleExternalClick,
-}) => {
+}) {
   const currentUser = React.useContext(CurrentUserContext);
 
   const [name, setName] = React.useState('');
@@ -21,17 +21,17 @@ const EditProfilePopup = ({
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onUpdateUser({name, about: description});
+    onUpdateUser({ name, about: description });
     onClose();
-  }
+  };
 
   const handleNameChange = (evt) => {
     setName(evt.target.value);
-  }
+  };
 
   const handleDescriptionChange = (evt) => {
     setDescription(evt.target.value);
-  }
+  };
 
   return (
     <PopupWithForm
@@ -42,7 +42,8 @@ const EditProfilePopup = ({
       onSubmit={handleSubmit}
       errors={errors}
       setErrors={setErrors}
-      handleExternalClick={handleExternalClick}>
+      handleExternalClick={handleExternalClick}
+    >
       <>
         <label className="popup__field" htmlFor="popup-input-name">
           <input
@@ -81,6 +82,6 @@ const EditProfilePopup = ({
       </>
     </PopupWithForm>
   );
-};
+}
 
 export default EditProfilePopup;
