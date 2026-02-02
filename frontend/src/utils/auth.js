@@ -32,14 +32,14 @@ export const authorize = (password, email) => fetch(`${API_BASE_URL}/signin`, {
   });
 
 export const checkToken = (token) => fetch(`${API_BASE_URL}/users/me`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-  }).then((res) => {
-    if (!res.ok) {
-      throw new Error('Invalid token');
-    }
-    return res.json();
-  });
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
+  },
+}).then((res) => {
+  if (!res.ok) {
+    throw new Error('Invalid token');
+  }
+  return res.json();
+});
