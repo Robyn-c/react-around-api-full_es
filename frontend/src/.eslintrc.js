@@ -24,6 +24,7 @@ module.exports = {
   rules: {
     'react/prop-types': 'off',
     'no-underscore-dangle': 'off',
-    'jsx-a11y/label-has-associated-control': 'off'
+    'jsx-a11y/label-has-associated-control': 'off',
+    'no-console': 'off'
   },
 };
