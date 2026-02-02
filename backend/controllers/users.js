@@ -51,34 +51,18 @@ const updateAvatar = (req, res, next) => {
 
 const login = (req, res) => {
   const { email, password } = req.body;
+
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      if (!user._id) {
-        console.log('user._id is undefined');
-        return;
-      }
+      // Create the token
+      const token = jwt.sign(
+        { _id: user._id },
+        JWT_SECRET,
+        { expiresIn: '7d' },
+      );
 
-      if (!secretKey) {
-        console.log('secretKey is undefined');
-        return;
-      }
-
-      try {
-        const token = jwt.sign(
-          { _id: user._id },
-          JWT_SECRET,
-          { expiresIn: '7d' },
-        );
-
-        if (!token) {
-          console.log('token is undefined');
-          return;
-        }
-
-        res.send({ token });
-      } catch (err) {
-        console.log('Error signing token:', err);
-      }
+      // Send the token
+      res.send({ token });
     })
     .catch((err) => {
       res.status(401).send({ message: err.message });
