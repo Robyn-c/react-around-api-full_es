@@ -31,8 +31,7 @@ export const authorize = (password, email) => fetch(`${API_BASE_URL}/signin`, {
     throw err;
   });
 
-export const checkToken = (token) =>
-  fetch(`${API_BASE_URL}/users/me`, {
+export const checkToken = (token) => fetch(`${API_BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
