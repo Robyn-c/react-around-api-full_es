@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 
-const secretKey = 'yourRandomJWTSecretHere';
+const secretKey = process.env.JWT_SECRET;
 
 const getUsers = (req, res, next) => {
   User.find({})
