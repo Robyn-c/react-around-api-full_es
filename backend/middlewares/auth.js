@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const secretKey = 'yourRandomJWTSecretHere';
+const { JWT_SECRET } = process.env;
 
 const handleAuthError = (res) => {
   res.status(401).send({ message: 'Error de autorización' });
@@ -22,7 +22,7 @@ module.exports = (req, res, next) => {
   try {
     payload = jwt.verify(
       token,
-      secretKey,
+      JWT_SECRET,
     );
   } catch (err) {
     return handleAuthError(res);
